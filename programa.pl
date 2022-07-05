@@ -1,3 +1,5 @@
+% Cosas para el menti:
+
 hace(losPiojos, masivo(cosquinRock, 15, argentina)).
 hace(losPiojos, propio(70074)).
 hace(damasGratis, propio(9290)).
@@ -9,5 +11,19 @@ costo(propio(Capacidad), Capacidad).
 costo(vivoIG(_,Horas,Seguidores), Costo):-
     Costo is Horas * Seguidores / 200.
 
-% Saber si una persona puede ver una banda. 
-% Esto sucede cuando el dinero que tiene la persona le alcanza para ver algún evento de la banda.
+esCaroV1(Evento):-
+    costo(Evento,Costo),
+    Costo >= 100000.
+
+esCaroV2(Evento):-
+    Costo >= 100000,
+    costo(Evento,Costo).
+
+esCaroV3(Evento):-
+    hace(Banda,Evento),
+    costo(Evento) >= 100000.
+
+esCaroV4(Evento):-
+    hace(Banda,Evento),
+    costo(Evento,Costo),
+    Costo >= 100000.
